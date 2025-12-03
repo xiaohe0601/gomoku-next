@@ -1,6 +1,8 @@
 # Gomoku Next
 
-⚪ 加入道具机制的五子棋游戏（由 TRAE SOLO 完成）
+加入道具机制的五子棋游戏（由 TRAE SOLO 完成）
+
+[🎮 在线体验](https://gomoku-next.netlify.app)
 
 ## 项目概述
 
