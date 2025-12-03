@@ -1,0 +1,649 @@
+/* 全局样式重置 */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+
+  font-synthesis: none;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.87);
+
+  color-scheme: light dark;
+  background-color: #242424;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1040px;
+  padding: 20px;
+  margin: 0;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#app {
+  width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* 游戏容器样式 */
+.gomoku-game {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 棋盘容器样式 */
+.board-container {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+/* 游戏信息容器样式 */
+.game-info-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Canvas样式 */
+.game-canvas {
+  flex-shrink: 0;
+  cursor: pointer;
+  background-color: #f5deb3;
+  border: 2px solid #333333;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* UI容器样式 */
+.game-ui {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  min-width: 350px;
+}
+
+/* 游戏信息样式 */
+.game-info {
+  padding: 15px;
+  margin-bottom: 15px;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.current-player,
+.game-state {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.player-indicator {
+  padding: 2px 8px;
+  margin-left: 5px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.player-indicator.black {
+  color: white;
+  background-color: black;
+}
+
+.player-indicator.white {
+  color: black;
+  background-color: white;
+}
+
+.game-state-value {
+  padding: 2px 8px;
+  margin-left: 5px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.game-state-value.ready {
+  color: #2196f3;
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+.game-state-value.playing {
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.game-state-value.paused {
+  color: #ffc107;
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+.game-state-value.over {
+  color: #f44336;
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+/* 游戏控制样式 */
+.game-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.game-controls button {
+  padding: 0.6em 1.2em;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  background-color: #1a1a1a;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  transition: all 0.25s;
+}
+
+.game-controls button:hover {
+  background-color: #2a2a2a;
+  border-color: #646cff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+/* 普通按钮点击效果 */
+.game-controls button:active {
+  background-color: #1a1a1a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+}
+
+/* 游戏模式选择器样式 */
+.mode-selector {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.mode-selector button {
+  padding: 0.4em 0.8em;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+}
+
+/* 颜色选择器样式 */
+.color-selector {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.color-selector button {
+  padding: 0.4em 0.8em;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+}
+
+/* 选中状态样式 */
+.game-controls button.selected {
+  color: white;
+  background-color: #646cff;
+  border-color: #646cff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.game-controls button.selected:hover {
+  background-color: #535bf2;
+  border-color: #535bf2;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+/* 选中按钮点击效果 */
+.game-controls button.selected:active {
+  background-color: #4347d1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+}
+
+/* 棋盘大小选择器样式 */
+.board-size-selector {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.board-size-selector label {
+  font-weight: 500;
+}
+
+.board-size-selector button {
+  padding: 0.4em 0.8em;
+  font-size: 0.9em;
+}
+
+/* 状态栏样式 */
+.status-bar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  margin-top: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+/* 状态栏内容容器样式 */
+.status-bar-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 空状态样式 */
+.status-bar-content:empty::after {
+  width: 100%;
+  padding: 6px 10px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  content: "无特殊状态";
+}
+
+.status-effect {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  cursor: help;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  transition: all 0.2s ease;
+}
+
+.status-effect:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.effect-icon {
+  font-size: 1.2em;
+}
+
+.effect-name {
+  font-weight: 500;
+}
+
+/* 道具说明按钮样式 */
+.item-info-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  font-size: 1.2em;
+  color: white;
+  cursor: pointer;
+  background-color: #646cff;
+  border: none;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.item-info-button:hover {
+  width: 44px;
+  height: 44px;
+  background-color: #535bf2;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* 道具说明按钮点击效果 */
+.item-info-button:active {
+  width: 40px;
+  height: 40px;
+  background-color: #4347d1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+}
+
+/* 道具说明弹窗样式 */
+.item-info-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  max-height: 80vh;
+  padding: 20px;
+  background-color: #242424;
+  border: 1px solid #333333;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%);
+}
+
+.item-info-popup.hidden {
+  display: none;
+}
+
+.item-info-popup h3 {
+  flex-shrink: 0;
+  padding-bottom: 10px;
+  margin: 0 0 20px 0;
+  color: #ffffff;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.item-list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+  padding-right: 5px; /* 为滚动条预留空间 */
+  margin-bottom: 20px;
+  overflow-y: auto;
+}
+
+.item-section {
+  margin-bottom: 20px;
+}
+
+.item-section h4 {
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  color: #646cff;
+  border-bottom: 1px solid #333333;
+}
+
+.items-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.item-info-item {
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.item-info-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.item-header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.item-icon {
+  font-size: 1.5em;
+}
+
+.item-name {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.item-description {
+  font-size: 0.9em;
+  line-height: 1.4;
+  color: #cccccc;
+}
+
+#close-popup {
+  display: block;
+  flex-shrink: 0;
+  padding: 0.5em 1em;
+  margin: 0 auto;
+  color: white;
+  cursor: pointer;
+  background-color: #646cff;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+/* 滚动条样式 */
+.item-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.item-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.item-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.item-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+#close-popup:hover {
+  background-color: #535bf2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .gomoku-game {
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .game-info {
+    padding: 12px;
+  }
+
+  .current-player,
+  .game-state {
+    font-size: 1em;
+  }
+
+  .game-controls button {
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+  }
+
+  .items-container {
+    grid-template-columns: 1fr;
+  }
+
+  .item-info-popup {
+    max-width: 95%;
+    max-height: 95%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .gomoku-game {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .game-info {
+    padding: 10px;
+  }
+
+  .board-size-selector {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+/* 浅色主题样式 */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  .gomoku-game {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .game-canvas {
+    border-color: #cccccc;
+  }
+
+  .game-info {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .game-controls button {
+    color: #213547;
+    background-color: #f9f9f9;
+    border: 1px solid #dddddd;
+  }
+
+  .game-controls button:hover {
+    background-color: #f0f0f0;
+    border-color: #646cff;
+  }
+
+  /* 浅色主题下的普通按钮点击效果 */
+  .game-controls button:active {
+    background-color: #e0e0e0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+  }
+
+  /* 浅色主题下的选中按钮点击效果 */
+  .game-controls button.selected:active {
+    background-color: #4347d1;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+  }
+
+  /* 浅色主题下的状态栏样式 */
+  .status-bar {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  /* 浅色主题下的空状态样式 */
+  .status-bar-content:empty::after {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  /* 浅色主题下的道具说明弹窗样式 */
+  .item-info-popup {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .item-info-popup h3 {
+    color: #213547;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .item-section h4 {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .item-info-item {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  .item-info-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .item-name {
+    color: #213547;
+  }
+
+  .item-description {
+    color: #666666;
+  }
+
+  #close-popup {
+    color: white;
+    background-color: #646cff;
+  }
+
+  #close-popup:hover {
+    background-color: #535bf2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 浅色主题下的滚动条样式 */
+  .item-list::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .item-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+  }
+
+  .item-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  .item-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}

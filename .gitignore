@@ -1,0 +1,44 @@
+# Lock (Only PNPM)
+package-lock.json
+yarn.lock
+
+# Local
+.env.local
+.env.*.local
+*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Cache
+.temp
+.cache
+.eslintcache
+.stylelintcache
+.output
+.nuxt
+
+# Bundle
+node_modules
+dist
+dist-ssr
+/coverage/
+
+# Editor and System
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.project
+.idea
+.hbuilderx
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,0 +1,34 @@
+{
+  "name": "gomoku-next",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.24.0",
+  "scripts": {
+    "prepare": "simple-git-hooks",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint --cache",
+    "lint:fix": "nr lint --fix",
+    "lint:type": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@antfu/ni": "catalog:",
+    "@types/node": "catalog:",
+    "@xiaohe01/eslint-config": "catalog:",
+    "@xiaohe01/tsconfig": "catalog:",
+    "eslint": "catalog:",
+    "esno": "catalog:",
+    "lint-staged": "catalog:",
+    "simple-git-hooks": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
