@@ -13,6 +13,7 @@ export class GameUI {
   private currentPlayerElement: HTMLElement | undefined;
   private gameStateElement: HTMLElement | undefined;
   private controlsElement: HTMLElement | undefined;
+  private itemToggle: HTMLInputElement | null = null;
 
   /**
    * 构造函数
@@ -130,6 +131,27 @@ export class GameUI {
     boardSizeContainer.appendChild(size19Button);
 
     this.controlsElement.appendChild(boardSizeContainer);
+
+    // 道具开关
+    const itemToggleContainer = document.createElement("div");
+    itemToggleContainer.className = "item-toggle-container";
+
+    const itemToggleLabel = document.createElement("label");
+    itemToggleLabel.textContent = "启用道具系统: ";
+    itemToggleLabel.htmlFor = "item-toggle";
+
+    this.itemToggle = document.createElement("input");
+    this.itemToggle.type = "checkbox";
+    this.itemToggle.id = "item-toggle";
+    this.itemToggle.checked = this.game.getConfig().enableItems;
+    this.itemToggle.addEventListener("change", () => {
+      this.game.setConfig({ enableItems: this.itemToggle!.checked });
+      this.updateUI();
+    });
+
+    itemToggleContainer.appendChild(itemToggleLabel);
+    itemToggleContainer.appendChild(this.itemToggle);
+    this.controlsElement.appendChild(itemToggleContainer);
 
     // 添加游戏信息到游戏信息容器（棋盘上方）
     this.gameInfoContainer.appendChild(this.gameInfoElement);
@@ -468,6 +490,18 @@ export class GameUI {
 
     // 更新状态栏
     this.updateStatusBar();
+
+    // 更新道具开关状态
+    this.updateItemToggleUI();
+  }
+
+  /**
+   * 更新道具开关状态
+   */
+  private updateItemToggleUI(): void {
+    if (this.itemToggle) {
+      this.itemToggle.checked = this.game.getConfig().enableItems;
+    }
   }
 
   /**

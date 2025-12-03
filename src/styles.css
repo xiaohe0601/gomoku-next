@@ -250,6 +250,34 @@ body::-webkit-scrollbar {
   font-size: 0.9em;
 }
 
+/* 道具开关样式 */
+.item-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.item-toggle-container label {
+  font-weight: 500;
+}
+
+.item-toggle-container input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #646cff;
+  transition: all 0.2s ease;
+}
+
+.item-toggle-container input[type="checkbox"]:hover {
+  transform: scale(1.1);
+}
+
 /* 状态栏样式 */
 .status-bar {
   position: relative;
@@ -577,6 +605,11 @@ body::-webkit-scrollbar {
 
   /* 浅色主题下的状态栏样式 */
   .status-bar {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  /* 浅色主题下的道具开关样式 */
+  .item-toggle-container {
     background-color: rgba(0, 0, 0, 0.05);
   }
 
