@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.24.0",
+  "packageManager": "pnpm@10.25.0",
   "scripts": {
     "prepare": "simple-git-hooks",
     "dev": "vite",
@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "lint": "eslint --cache",
     "lint:fix": "nr lint --fix",
-    "lint:type": "tsc --noEmit"
+    "lint:type": "tsc -b --noEmit"
   },
   "devDependencies": {
     "@antfu/ni": "catalog:",
