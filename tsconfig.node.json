@@ -7,9 +7,11 @@
     ],
     "types": [
       "node"
-    ]
+    ],
+    "allowJs": true
   },
   "include": [
+    "eslint.config.js",
     "vite.config.ts"
   ]
 }

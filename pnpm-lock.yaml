@@ -4,72 +4,39 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-catalogs:
-  default:
-    '@antfu/ni':
-      specifier: ^28.0.0
-      version: 28.0.0
-    '@types/node':
-      specifier: ^22.19.3
-      version: 22.19.3
-    '@xiaohe01/eslint-config':
-      specifier: ^4.1.0
-      version: 4.1.0
-    '@xiaohe01/tsconfig':
-      specifier: ^3.1.0
-      version: 3.1.0
-    eslint:
-      specifier: ^9.39.2
-      version: 9.39.2
-    esno:
-      specifier: ^4.8.0
-      version: 4.8.0
-    lint-staged:
-      specifier: ^16.2.7
-      version: 16.2.7
-    simple-git-hooks:
-      specifier: ^2.13.1
-      version: 2.13.1
-    typescript:
-      specifier: ~5.9.3
-      version: 5.9.3
-    vite:
-      specifier: ^7.3.0
-      version: 7.3.0
-
 importers:
 
   .:
     devDependencies:
       '@antfu/ni':
-        specifier: 'catalog:'
+        specifier: ^28.0.0
         version: 28.0.0
       '@types/node':
-        specifier: 'catalog:'
+        specifier: ^22.19.3
         version: 22.19.3
       '@xiaohe01/eslint-config':
-        specifier: 'catalog:'
+        specifier: ^4.1.0
         version: 4.1.0(@vue/compiler-sfc@3.5.26)(eslint@9.39.2)(typescript@5.9.3)
       '@xiaohe01/tsconfig':
-        specifier: 'catalog:'
+        specifier: ^3.1.0
         version: 3.1.0
       eslint:
-        specifier: 'catalog:'
+        specifier: ^9.39.2
         version: 9.39.2
       esno:
-        specifier: 'catalog:'
+        specifier: ^4.8.0
         version: 4.8.0
       lint-staged:
-        specifier: 'catalog:'
+        specifier: ^16.2.7
         version: 16.2.7
       simple-git-hooks:
-        specifier: 'catalog:'
+        specifier: ^2.13.1
         version: 2.13.1
       typescript:
-        specifier: 'catalog:'
+        specifier: ~5.9.3
         version: 5.9.3
       vite:
-        specifier: 'catalog:'
+        specifier: ^7.3.0
         version: 7.3.0(@types/node@22.19.3)(tsx@4.21.0)(yaml@2.8.2)
 
 packages:
