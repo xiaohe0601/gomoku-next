@@ -11,7 +11,7 @@ catalog:
   lint-staged: ^16.2.7
   simple-git-hooks: ^2.13.1
   typescript: ~5.9.3
-  vite: ^7.2.7
+  vite: ^7.3.0
 
 onlyBuiltDependencies:
   - esbuild
